@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.ContatoDAO;
 import beans.Contato;
 
-public class Contatos extends HttpServlet {
+public class ServletContatos extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest request,

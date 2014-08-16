@@ -48,9 +48,9 @@ public class ContatoDAO {
 			PreparedStatement statement = conn.prepareStatement(sql);
 
 			ResultSet result = statement.executeQuery();
+
 			
-			conn.close();
-			
+
 			while (result.next()) {
 				Contato contato = new Contato();
 				contato.setNome(result.getString("nome"));
@@ -65,8 +65,12 @@ public class ContatoDAO {
 
 			e.printStackTrace();
 		}
-		
+
 		return lista;
+	}
+
+	public ArrayList<Contato> getLista() {
+		return listarContatos();
 	}
 
 }

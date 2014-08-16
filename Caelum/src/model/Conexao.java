@@ -7,12 +7,15 @@ import java.sql.SQLException;
 public class Conexao {
 
 	public Connection getConnection(){
+		
 		Connection conn = null;
 		try {
-		 conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/estudos","root","skynet");
+		 Class.forName("com.mysql.jdbc.Driver");
+			
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/estudos","root","skynet");
 		System.out.println("Conexão bem sucedida!");
 		
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			
 			e.printStackTrace();
 		}
