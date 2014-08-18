@@ -36,6 +36,34 @@ public class ContatoDAO {
 
 	}
 
+	public void excluirContato(Contato contato) {
+
+		Connection conn = new Conexao().getConnection();
+		String sqlConsulta = "select * from estudos.contatos where nome = '"
+				+ contato.getNome() + "'";
+
+		try {
+			PreparedStatement statement = conn.prepareStatement(sqlConsulta);
+			ResultSet result = statement.executeQuery();
+
+			while (result.next()) {
+
+				contato.setId(result.getLong("idcontatos"));
+
+			}
+
+			String sqlDel = "delete from estudos.contato where idcontatos = '"
+					+ contato.getId() + "'";
+
+			statement.execute(sqlDel);
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+	}
+
 	public ArrayList<Contato> listarContatos() {
 
 		ArrayList<Contato> lista = new ArrayList<Contato>();
@@ -48,8 +76,6 @@ public class ContatoDAO {
 			PreparedStatement statement = conn.prepareStatement(sql);
 
 			ResultSet result = statement.executeQuery();
-
-			
 
 			while (result.next()) {
 				Contato contato = new Contato();

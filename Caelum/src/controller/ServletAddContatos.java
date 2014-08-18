@@ -1,8 +1,9 @@
-package view;
+package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.ContatoDAO;
 import beans.Contato;
 
-public class ServletContatos extends HttpServlet {
+public class ServletAddContatos extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest request,
@@ -33,12 +34,16 @@ public class ServletContatos extends HttpServlet {
 
 		new ContatoDAO().salvar(contato);
 		
+		RequestDispatcher rd =  request.getRequestDispatcher("/contato-adicionado.jsp");
+		rd.forward(request, response);
 		
-		out.println("<html>");
-		out.println("<body>");
-		out.println("Contato " + contato.getNome() + " adicionado com sucesso");
-		out.println("</body>");
-		out.println("</html>");
+		
+		
+//		out.println("<html>");
+//		out.println("<body>");
+//		out.println("Contato " + contato.getNome() + " adicionado com sucesso");
+//		out.println("</body>");
+//		out.println("</html>");
 	}
 
 }
