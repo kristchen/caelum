@@ -20,7 +20,7 @@ public class ContatoDAO {
 				+ "', set endereco ='" + contato.getDataNascimento()
 				+ "' , set email ='" + contato.getEmail()
 				+ "' , set dt_nascimento ='" + contato.getDataNascimento()
-				+ "' where idcontatos ='"+contato.getId()+"'" ;
+				+ "' where nome ='"+contato.getNome()+"'" ;
 
 		try {
 			PreparedStatement statement = conn.prepareStatement(sql);

@@ -32,7 +32,7 @@ public class AddContatos implements Logica {
 		String email = request.getParameter("email");
 		String dataNascimento = request.getParameter("dataNascimento");
 
-		System.out.println(nome);
+		
 		
 		contato.setNome(nome);
 		contato.setEmail(email);
@@ -41,7 +41,7 @@ public class AddContatos implements Logica {
 
 		new ContatoDAO().salvarContato(contato);
 	
-		return "listarContatos.jsp";
+		return "mvc?logica=ListarContatos";
 	}
 
 }
