@@ -5,45 +5,43 @@ import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.ContatoDAO;
 import beans.Contato;
+import beans.Logica;
 
-public class ServletAddContatos extends HttpServlet {
+//@WebServlet("/addContato")
+public class AddContatos implements Logica {
 
 	@Override
-	protected void service(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-
+	public String executa(HttpServletResponse response,
+			HttpServletRequest request) throws Exception {
 		Contato contato = new Contato();
 
 		PrintWriter out = response.getWriter();
 
+		System.out.println("chamou");
+		
+		
 		String nome = request.getParameter("nome");
 		String endereco = request.getParameter("endereco");
 		String email = request.getParameter("email");
 		String dataNascimento = request.getParameter("dataNascimento");
 
+		System.out.println(nome);
+		
 		contato.setNome(nome);
 		contato.setEmail(email);
 		contato.setEndereco(endereco);
 		contato.setDataNascimento(dataNascimento);
 
-		new ContatoDAO().salvar(contato);
-		
-		RequestDispatcher rd =  request.getRequestDispatcher("/contato-adicionado.jsp");
-		rd.forward(request, response);
-		
-		
-		
-//		out.println("<html>");
-//		out.println("<body>");
-//		out.println("Contato " + contato.getNome() + " adicionado com sucesso");
-//		out.println("</body>");
-//		out.println("</html>");
+		new ContatoDAO().salvarContato(contato);
+	
+		return "listarContatos.jsp";
 	}
 
 }

@@ -14,7 +14,25 @@ public class ContatoDAO {
 
 	private ArrayList<Contato> lista;
 
-	public void salvar(Contato contato) {
+	public void alterarContato(Contato contato) {
+		Connection conn = new Conexao().getConnection();
+		String sql = "update estudos.contatos set nome ='" + contato.getNome()
+				+ "', set endereco ='" + contato.getDataNascimento()
+				+ "' , set email ='" + contato.getEmail()
+				+ "' , set dt_nascimento ='" + contato.getDataNascimento()
+				+ "' where idcontatos ='"+contato.getId()+"'" ;
+
+		try {
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.execute();
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void salvarContato(Contato contato) {
 		Connection conn = new Conexao().getConnection();
 		String sql = "insert into estudos.contatos(nome,endereco,email,dt_nascimento) values(?,?,?,?)";
 		try {
@@ -39,24 +57,13 @@ public class ContatoDAO {
 	public void excluirContato(Contato contato) {
 
 		Connection conn = new Conexao().getConnection();
-		String sqlConsulta = "select * from estudos.contatos where nome = '"
-				+ contato.getNome() + "'";
+		String sql = "delete from estudos.contatos where idcontatos = '"
+				+ contato.getId() + "'";
 
 		try {
-			PreparedStatement statement = conn.prepareStatement(sqlConsulta);
-			ResultSet result = statement.executeQuery();
-
-			while (result.next()) {
-
-				contato.setId(result.getLong("idcontatos"));
-
-			}
-
-			String sqlDel = "delete from estudos.contato where idcontatos = '"
-					+ contato.getId() + "'";
-
-			statement.execute(sqlDel);
-
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.execute();
+			conn.close();
 		} catch (SQLException e) {
 
 			e.printStackTrace();
@@ -83,10 +90,11 @@ public class ContatoDAO {
 				contato.setEmail(result.getString("email"));
 				contato.setEndereco(result.getString("endereco"));
 				contato.setDataNascimento(result.getString("dt_nascimento"));
-
+				contato.setId(result.getLong("idcontatos"));
 				lista.add(contato);
 			}
 
+			conn.close();
 		} catch (SQLException e) {
 
 			e.printStackTrace();

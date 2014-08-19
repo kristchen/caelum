@@ -15,6 +15,6 @@
   </servlet-mapping>
   <servlet>
   	<servlet-name>addContato</servlet-name>
-  	<servlet-class>view.ServletContatos</servlet-class>
+  	<servlet-class>controller.ControllServlet</servlet-class>
   </servlet>
 </web-app>
