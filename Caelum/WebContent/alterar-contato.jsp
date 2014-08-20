@@ -16,8 +16,8 @@
 
 <body>
 	<c:import url="cabecalho.jsp"></c:import>
-	<h1>Agenda</h1>
-	<form action="mvc" method="post">
+	<h1>Alterar Contato</h1>
+	<form action="contatos-servlet" method="post">
 		<table>
 			<tr>
 			<tr>
@@ -43,6 +43,7 @@
 			<input type="submit" name="alterar" value="Alterar">
 			<input type ="hidden" name="logica" value="AlterarContatos">
 			<input type ="hidden" name="pass" value ="listar">
+			<input type ="hidden" name="id" value ="${param.id }">
 			</tr>
 
 			</tr>

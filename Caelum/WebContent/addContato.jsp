@@ -17,7 +17,7 @@
 <body>
 	<c:import url="cabecalho.jsp"></c:import>
 	<h1>Agenda</h1>
-	<form action="mvc" method="post">
+	<form action="contatos-servlet" method="post">
 		<table>
 			<tr>
 			<tr>

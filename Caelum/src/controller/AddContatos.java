@@ -41,7 +41,7 @@ public class AddContatos implements Logica {
 
 		new ContatoDAO().salvarContato(contato);
 	
-		return "mvc?logica=ListarContatos";
+		return "contatos-servlet?logica=ListarContatos";
 	}
 
 }

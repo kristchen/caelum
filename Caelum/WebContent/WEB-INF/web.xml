@@ -10,11 +10,11 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet-mapping>
-  	<servlet-name>addContato</servlet-name>
-  	<url-pattern>/addContato</url-pattern>
+  	<servlet-name>ControllServlet</servlet-name>
+  	<url-pattern>/contatos-servlet</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>addContato</servlet-name>
+  	<servlet-name>ControllServlet</servlet-name>
   	<servlet-class>controller.ControllServlet</servlet-class>
   </servlet>
 </web-app>

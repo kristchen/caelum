@@ -16,16 +16,29 @@ public class ContatoDAO {
 
 	public void alterarContato(Contato contato) {
 		Connection conn = new Conexao().getConnection();
-		String sql = "update estudos.contatos set nome ='" + contato.getNome()
-				+ "', set endereco ='" + contato.getDataNascimento()
-				+ "' , set email ='" + contato.getEmail()
-				+ "' , set dt_nascimento ='" + contato.getDataNascimento()
-				+ "' where nome ='"+contato.getNome()+"'" ;
+		 String sql = "update estudos.contatos set nome ='" +
+		 contato.getNome()
+		 + "' ,  endereco ='" + contato.getEndereco()
+		 + "' ,   email ='" + contato.getEmail()
+		 + "' ,   dt_nascimento ='" + contato.getDataNascimento()
+		 + "' where idcontatos ='"+contato.getId()+"'" ;
 
+	//	String sql = "update estudos.contatos set nome = ? ,  endereco = ? ,   email = ? ,   dt_nascimento = ?, where idcontatos = ? ";
+		
+		
 		try {
 			PreparedStatement statement = conn.prepareStatement(sql);
+
+//			statement.setString(1, contato.getNome());
+//			statement.setString(2, contato.getEndereco());
+//			statement.setString(3, contato.getEmail());
+//			statement.setString(4, contato.getDataNascimento());
+//			statement.setLong(5, contato.getId());
+//
+//		System.out.println(sql);
+			
 			statement.execute();
-		
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
