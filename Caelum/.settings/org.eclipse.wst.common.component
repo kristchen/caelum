@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="Caelum">
+    <wb-module deploy-name="Caelum-fj21-JSP">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="Caelum"/>
-        <property name="java-output-path" value="/Caelum/build/classes"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/br.treinamento.web"/>
+        <property name="java-output-path" value="/Caelum-fj21-JSP/build/classes"/>
+        <property name="context-root" value="Caelum-fj21-JSP"/>
     </wb-module>
 </project-modules>

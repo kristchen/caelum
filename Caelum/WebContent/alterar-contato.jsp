@@ -14,37 +14,37 @@
 <script src="js/jquery-ui.js"></script>
 
 
-<body>
+<body >
 	<c:import url="cabecalho.jsp"></c:import>
 	<h1>Alterar Contato</h1>
 	<form action="contatos-servlet" method="post">
-		<table>
+		<table align="center">
 			<tr>
-			<tr>
+			<tr align="center">
 				Nome
 				<input type="text" name="nome" value = "${param.nome}">
 				<br />
 			</tr>
-			<tr>
+			<tr align="center">
 				Email
 				<input type="text" name="email" value = "${param.email}">
 				<br />
-			<tr>
+			<tr align="center">
 				Endereco
 				<input type="text" name="endereco" value = "${param.endereco}">
 				<br />
 			</tr>
-			<tr>
+			<tr align="center">
 				Data Nascimento
 				<data:campoData id="dataNascimento"></data:campoData>
 				<br />
 			</tr>
-			<tr>
+			<tr align="center">
 			<input type="submit" name="alterar" value="Alterar">
 			<input type ="hidden" name="logica" value="AlterarContatos">
 			<input type ="hidden" name="pass" value ="listar">
 			<input type ="hidden" name="id" value ="${param.id }">
-			</tr>
+			</tr align="center">
 
 			</tr>
 

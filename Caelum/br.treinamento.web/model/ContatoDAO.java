@@ -11,11 +11,17 @@ import com.mysql.fabric.xmlrpc.base.Array;
 import beans.Contato;
 
 public class ContatoDAO {
-
+	private Connection connection;
 	private ArrayList<Contato> lista;
 
+	
+	
+	public ContatoDAO(Connection connection) {
+			this.connection = connection;
+	}
+
 	public void alterarContato(Contato contato) {
-		Connection conn = new Conexao().getConnection();
+		 connection = new Conexao().getConnection();
 		 String sql = "update estudos.contatos set nome ='" +
 		 contato.getNome()
 		 + "' ,  endereco ='" + contato.getEndereco()
@@ -27,15 +33,15 @@ public class ContatoDAO {
 		
 		
 		try {
-			PreparedStatement statement = conn.prepareStatement(sql);
+			PreparedStatement statement = connection.prepareStatement(sql);
 
 //			statement.setString(1, contato.getNome());
 //			statement.setString(2, contato.getEndereco());
 //			statement.setString(3, contato.getEmail());
 //			statement.setString(4, contato.getDataNascimento());
 //			statement.setLong(5, contato.getId());
-//
-//		System.out.println(sql);
+
+
 			
 			statement.execute();
 
@@ -46,10 +52,10 @@ public class ContatoDAO {
 	}
 
 	public void salvarContato(Contato contato) {
-		Connection conn = new Conexao().getConnection();
+		 connection = new Conexao().getConnection();
 		String sql = "insert into estudos.contatos(nome,endereco,email,dt_nascimento) values(?,?,?,?)";
 		try {
-			PreparedStatement statement = conn.prepareStatement(sql);
+			PreparedStatement statement = connection.prepareStatement(sql);
 
 			statement.setString(1, contato.getNome());
 			statement.setString(2, contato.getEmail());
@@ -58,7 +64,7 @@ public class ContatoDAO {
 
 			statement.execute();
 
-			conn.close();
+			connection.close();
 
 		} catch (SQLException e) {
 
